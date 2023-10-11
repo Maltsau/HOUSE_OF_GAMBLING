@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 import { ButtonStyled } from "./UI/common-elements";
 
@@ -61,6 +62,7 @@ const LanguageIcon = styled.img`
 `;
 
 export default function Header() {
+  const [isRussian, setIsRussian] = useState(false);
   return (
     <Container>
       <MenuContainer>
@@ -89,16 +91,23 @@ export default function Header() {
             </MenuNavBar>
           </nav>
           <ButtonContainer>
-            <ButtonStyled isPrimary={false} padding={"14px"}>
+            <ButtonStyled
+              isPrimary={false}
+              padding={"14px"}
+              href="#"
+              onClick={() => {
+                setIsRussian(!isRussian);
+              }}
+            >
               <LanguageContainer>
                 <LanguageIcon />
-                EN
+                {isRussian ? "RU" : "EN"}
               </LanguageContainer>
             </ButtonStyled>
-            <ButtonStyled isPrimary={false} padding={"14px"}>
+            <ButtonStyled isPrimary={false} padding={"14px"} href="#">
               LOG IN
             </ButtonStyled>
-            <ButtonStyled isPrimary padding={"14px"}>
+            <ButtonStyled isPrimary padding={"14px"} href="#">
               SIGN UP
             </ButtonStyled>
           </ButtonContainer>
