@@ -4,11 +4,18 @@ const Container = styled.footer`
   border-top: 4px solid #9dadf2;
   border-left: 4px solid #9dadf2;
   border-right: 4px solid #9dadf2;
-  border-radius: 100px 100px 0 0;
+  border-radius: 50px 50px 0 0;
   padding: 40px 140px 24px 140px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  @media (max-width: 1250px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 20px 30px 20px;
+    border-width: 2px;
+  }
 `;
 
 const LinkContainer = styled.ul`
@@ -17,6 +24,11 @@ const LinkContainer = styled.ul`
   & li:first-child > a {
     text-decoration: underline;
     color: #478bf9;
+  }
+  @media (max-width: 750px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
   }
 `;
 
@@ -34,6 +46,9 @@ const SocialContainer = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 14px;
+  @media (max-width: 1250px) {
+    align-items: flex-start;
+  }
 `;
 
 const SocialTitle = styled.h2`

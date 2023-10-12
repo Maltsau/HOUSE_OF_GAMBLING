@@ -4,7 +4,11 @@ import { useState } from "react";
 import { ButtonStyled } from "./UI/common-elements";
 
 const Container = styled.header`
+  position: relative;
   padding: 16px 140px 0 140px;
+  @media (max-width: 1550px) {
+    padding: 10px 3.125vw 0 3.125vw;
+  }
 `;
 
 const MenuContainer = styled.div`
@@ -14,12 +18,20 @@ const MenuContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1350px) {
+    border: 2px solid #478bf9;
+    justify-content: flex-end;
+    padding: 10px 14px;
+  }
 `;
 
 const InnerNavContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 1350px) {
+    display: none;
+  }
 `;
 
 const EmptyBlock = styled.div`
@@ -61,8 +73,49 @@ const LanguageIcon = styled.img`
   content: url("../src/assets/icons/languge-icon.svg");
 `;
 
+const MobileMenuContainer = styled.div`
+  display: none;
+  @media (max-width: 1350px) {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+`;
+
+const MobileButton = styled.div`
+  width: 36px;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+`;
+
+const MobileLanguageButton = styled(MobileButton)`
+  border: 2px solid #9dadf2;
+  border-radius: 20px;
+`;
+
+const MobileLanguageIcon = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
+const BurgerLine = styled.div`
+  height: 2px;
+  width: 21px;
+  border-radius: 2px;
+  background-color: white;
+`;
+
+const MobileMenu = styled.div`
+  position: absolute;
+`;
+
 export default function Header() {
   const [isRussian, setIsRussian] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <Container>
       <MenuContainer>
@@ -112,7 +165,34 @@ export default function Header() {
             </ButtonStyled>
           </ButtonContainer>
         </InnerNavContainer>
+        <MobileMenuContainer>
+          <MobileLanguageButton>
+            <MobileLanguageIcon
+              src="/src/assets/icons/languge-icon.svg"
+              alt="language-icon"
+            />
+          </MobileLanguageButton>
+          <MobileButton
+            onClick={() => {
+              setIsMenuOpen(!isMenuOpen);
+            }}
+          >
+            {isMenuOpen ? (
+              <img src="/src/assets/icons/close-icon.svg" alt="close-icon" />
+            ) : (
+              <>
+                <BurgerLine />
+                <BurgerLine />
+                <BurgerLine />
+              </>
+            )}
+            {/* <BurgerLine />
+            <BurgerLine />
+            <BurgerLine /> */}
+          </MobileButton>
+        </MobileMenuContainer>
       </MenuContainer>
+      {isMenuOpen ? <MobileMenu>MENU</MobileMenu> : null}
     </Container>
   );
 }
