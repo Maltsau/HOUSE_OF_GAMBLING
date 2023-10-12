@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { ButtonStyled } from "./UI/common-elements";
 
 const Container = styled.section`
-  height: 960px;
-  padding: 0 140px;
+  height: 1020px;
+  padding: 0 140px 60px 140px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -44,10 +44,39 @@ const AnimationBlock = styled.div`
   height: 100%;
   display: flex;
   gap: 16px;
+  overflow: hidden;
 `;
 
 const AnimationColumn = styled.div`
   width: 100px;
+`;
+
+const endlesLine = keyframes`
+  from {
+    transform: translateY(-100%)
+  }
+  to {
+    transform: translateY(0%)
+  }
+`;
+
+const endlesLineReverse = keyframes`
+  from {
+    transform: translateY(0%)
+  }
+  to {
+    transform: translateY(-100%)
+  }
+`;
+
+const MiddleLine = styled.img`
+  animation: ${endlesLine} 6s linear infinite;
+  background: linear-gradient(#110a1d, #111111);
+`;
+
+const LateralLine = styled.img`
+  animation: ${endlesLineReverse} 6s linear infinite;
+  background: linear-gradient(#110a1d, #111111);
 `;
 
 const BlogBlock = styled.div``;
@@ -135,9 +164,36 @@ export default function HomePage() {
         </ButtonContainer>
       </HouseBlock>
       <AnimationBlock>
-        <AnimationColumn></AnimationColumn>
-        <AnimationColumn></AnimationColumn>
-        <AnimationColumn></AnimationColumn>
+        <AnimationColumn>
+          <LateralLine
+            src="/src/assets/images/Line_Vertical_1.png"
+            alt="column1"
+          />
+          <LateralLine
+            src="/src/assets/images/Line_Vertical_1.png"
+            alt="column1"
+          />
+        </AnimationColumn>
+        <AnimationColumn>
+          <MiddleLine
+            src="/src/assets/images/Line_Vertical_2.png"
+            alt="column2"
+          />
+          <MiddleLine
+            src="/src/assets/images/Line_Vertical_2.png"
+            alt="column2"
+          />
+        </AnimationColumn>
+        <AnimationColumn>
+          <LateralLine
+            src="/src/assets/images/Line_Vertical_3.png"
+            alt="column3"
+          />
+          <LateralLine
+            src="/src/assets/images/Line_Vertical_3.png"
+            alt="column3"
+          />
+        </AnimationColumn>
       </AnimationBlock>
       <BlogBlock>
         <BlogTitle>BLOG</BlogTitle>
@@ -145,14 +201,14 @@ export default function HomePage() {
           <BlogContainer>
             {articlesArr.map((article, pos) => {
               return pos === 0 ? (
-                <BlogLink href="#">
+                <BlogLink href="#" key={`article${pos}`}>
                   <BlogContentActive>
                     <BlogArticle>{article}</BlogArticle>
                     <BlogDate>10.02.2023</BlogDate>
                   </BlogContentActive>
                 </BlogLink>
               ) : (
-                <BlogLink>
+                <BlogLink key={`article${pos}`}>
                   <BlogContent>
                     <BlogArticle>{article}</BlogArticle>
                     <BlogDate>10.02.2023</BlogDate>

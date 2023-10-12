@@ -80,7 +80,7 @@ export default function Footer() {
           <LinkContainer>
             {linksArr.map((link) => {
               return (
-                <MenuNavItem>
+                <MenuNavItem key={link}>
                   <MenuNavLink href="#">{link}</MenuNavLink>
                 </MenuNavItem>
               );
@@ -93,7 +93,7 @@ export default function Footer() {
         <IconsContainer>
           {iconArr.map((icon) => {
             return (
-              <IconLink href="#">
+              <IconLink href="#" key={icon}>
                 <SocialIcon src={icon} alt={icon} />
               </IconLink>
             );
