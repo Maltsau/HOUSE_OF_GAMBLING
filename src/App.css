@@ -8,8 +8,8 @@
   max-width: 1920px;
   margin: 0 auto;
   text-align: center;
-  background: center / 200% no-repeat url("./src/assets/images/banner-area.png")
-    #110a1d;
+  background: center / 200% no-repeat
+    url("../src/assets/images/banner-area.png") #110a1d;
   color: #fff;
   font-family: "Lexend", sans-serif;
 

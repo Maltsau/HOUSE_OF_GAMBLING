@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ButtonStyled } from "./UI/common-elements";
 
 import languageIcon from "../assets/icons/languge-icon.svg";
+import closeIcon from "../assets/icons/close-icon.svg";
 
 const Container = styled.header`
   position: relative;
@@ -233,10 +234,7 @@ export default function Header() {
           </InnerNavContainer>
           <MobileMenuContainer>
             <MobileLanguageButton>
-              <MobileLanguageIcon
-                src="/src/assets/icons/languge-icon.svg"
-                alt="language-icon"
-              />
+              <MobileLanguageIcon src={languageIcon} alt="language-icon" />
             </MobileLanguageButton>
             <MobileButton
               onClick={() => {
@@ -244,7 +242,7 @@ export default function Header() {
               }}
             >
               {isMenuOpen ? (
-                <img src="/src/assets/icons/close-icon.svg" alt="close-icon" />
+                <img src={closeIcon} alt="close-icon" />
               ) : (
                 <>
                   <BurgerLine />
