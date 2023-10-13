@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 
 import { ButtonStyled } from "./UI/common-elements";
 
+import languageIcon from "../assets/icons/languge-icon.svg";
+
 const Container = styled.header`
   position: relative;
   padding: 16px 140px 0 140px;
@@ -74,7 +76,7 @@ const LanguageContainer = styled.div`
 const LanguageIcon = styled.img`
   width: 18px;
   height: 18px;
-  content: url("/src/assets/icons/languge-icon.svg");
+  content: url(${languageIcon});
 `;
 
 const MobileMenuContainer = styled.div`
