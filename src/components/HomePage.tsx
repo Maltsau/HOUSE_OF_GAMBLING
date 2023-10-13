@@ -311,7 +311,7 @@ export default function HomePage() {
           {setAnimation(
             2,
             <LateralLine
-              src="/src/assets/images/Line_Vertical_1.png"
+              src="../src/assets/images/Line_Vertical_1.png"
               alt="column1"
             />
           )}
@@ -320,7 +320,7 @@ export default function HomePage() {
           {setAnimation(
             2,
             <MiddleLine
-              src="/src/assets/images/Line_Vertical_2.png"
+              src="../src/assets/images/Line_Vertical_2.png"
               alt="column2"
             />
           )}
@@ -329,7 +329,7 @@ export default function HomePage() {
           {setAnimation(
             2,
             <LateralLine
-              src="/src/assets/images/Line_Vertical_3.png"
+              src="../src/assets/images/Line_Vertical_3.png"
               alt="column3"
             />
           )}
@@ -340,7 +340,7 @@ export default function HomePage() {
           {setAnimation(
             4,
             <LateralAnimationImage
-              src="/src/assets/images/Line_Horisontal_1.png"
+              src="../src/assets/images/Line_Horisontal_1.png"
               alt="row1"
             />
           )}
@@ -349,7 +349,7 @@ export default function HomePage() {
           {setAnimation(
             4,
             <MiddleAnimationImage
-              src="/src/assets/images/Line_Horisontal_2.png"
+              src="../src/assets/images/Line_Horisontal_2.png"
               alt="row2"
             />
           )}
@@ -358,7 +358,7 @@ export default function HomePage() {
           {setAnimation(
             4,
             <LateralAnimationImage
-              src="/src/assets/images/Line_Horisontal_3.png"
+              src="../src/assets/images/Line_Horisontal_3.png"
               alt="row3"
             />
           )}

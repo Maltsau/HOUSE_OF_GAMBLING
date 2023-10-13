@@ -74,7 +74,7 @@ const LanguageContainer = styled.div`
 const LanguageIcon = styled.img`
   width: 18px;
   height: 18px;
-  content: url("../src/assets/icons/languge-icon.svg");
+  content: url("/src/assets/icons/languge-icon.svg");
 `;
 
 const MobileMenuContainer = styled.div`
