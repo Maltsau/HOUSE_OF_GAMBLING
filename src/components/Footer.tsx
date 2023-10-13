@@ -16,29 +16,36 @@ const Container = styled.footer`
     padding: 20px 20px 30px 20px;
     border-width: 2px;
   }
+  @media (max-width: 400px) {
+    align-items: flex-start;
+  }
 `;
 
 const LinkContainer = styled.ul`
   display: flex;
   gap: 40px;
-  & li:first-child > a {
-    text-decoration: underline;
-    color: #478bf9;
-  }
   @media (max-width: 750px) {
     flex-direction: column;
     align-items: flex-start;
+    line-height: 1.2;
     gap: 2px;
   }
 `;
 
-const MenuNavItem = styled.li`
+const FooterItemTitle = styled.li`
   font-size: 16px;
+  @media (max-width: 1000px) {
+    font-size: 14px;
+  }
 `;
 
 const MenuNavLink = styled.a`
   text-decoration: none;
   color: inherit;
+  &:hover {
+    text-decoration: underline;
+    color: #478bf9;
+  }
 `;
 
 const SocialContainer = styled.div`
@@ -53,6 +60,9 @@ const SocialContainer = styled.div`
 
 const SocialTitle = styled.h2`
   font-size: 16px;
+  @media (max-width: 1000px) {
+    font-size: 14px;
+  }
 `;
 
 const IconsContainer = styled.div`
@@ -67,6 +77,10 @@ const SocialIcon = styled.img`
   height: 32px;
   &:hover {
     filter: brightness(150%);
+  }
+  @media (max-width: 400px) {
+    width: 27px;
+    height: 27px;
   }
 `;
 
@@ -95,9 +109,9 @@ export default function Footer() {
           <LinkContainer>
             {linksArr.map((link) => {
               return (
-                <MenuNavItem key={link}>
+                <FooterItemTitle key={link}>
                   <MenuNavLink href="#">{link}</MenuNavLink>
-                </MenuNavItem>
+                </FooterItemTitle>
               );
             })}
           </LinkContainer>

@@ -19,26 +19,26 @@ const Container = styled.a<{
 
 function ButtonStyled({
   children,
-  isPrimary,
+  isprimary,
   padding,
-  paddingMobile,
+  paddingmobile,
   href,
   onClick,
 }: {
   children: string | ReactNode;
-  isPrimary: boolean;
+  isprimary: boolean;
   padding: string;
-  paddingMobile?: string;
+  paddingmobile?: string;
   href?: string;
   onClick?: () => void;
 }) {
   return (
     <Container
-      isPrimary={isPrimary}
+      isPrimary={isprimary}
       padding={padding}
       href={href}
       onClick={onClick}
-      paddingMobile={paddingMobile}
+      paddingMobile={paddingmobile}
     >
       {children}
     </Container>

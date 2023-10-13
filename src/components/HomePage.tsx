@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { ButtonStyled } from "./UI/common-elements";
+import React from "react";
 
 const Container = styled.section`
   padding: 0 140px 60px 140px;
@@ -127,13 +128,11 @@ const horisontalEndlessLineReverse = keyframes`
 const MiddleLine = styled.img`
   width: 5vw;
   animation: ${verticalEndlessLine} 6s linear infinite;
-  background: linear-gradient(#110a1d, #111111);
 `;
 
 const LateralLine = styled.img`
   width: 5vw;
   animation: ${verticalEndlessLineReverse} 6s linear infinite;
-  background: linear-gradient(#110a1d, #111111);
 `;
 
 const AnimationBlockModal = styled.div`
@@ -151,14 +150,14 @@ const AnimationLineModal = styled.div`
 
 const LateralAnimationImage = styled.img`
   height: 10vw;
-  animation: ${horisontalEndlessLine} 3s linear infinite;
+  animation: ${horisontalEndlessLine} 6s linear infinite;
   @media (max-width: 700px) {
     height: 15.625vw;
   }
 `;
 
 const MiddleAnimationImage = styled(LateralAnimationImage)`
-  animation: ${horisontalEndlessLineReverse} 3s linear infinite;
+  animation: ${horisontalEndlessLineReverse} 6s linear infinite;
 `;
 
 const BlogBlock = styled.div`
@@ -287,6 +286,9 @@ export default function HomePage() {
   const articlesArr = new Array(5).fill(
     "Payment methods: Skrill, Neteller, webmoney, Bank transfer"
   );
+  const setAnimation = (itt: number, element: React.JSX.Element) => {
+    return new Array(itt).fill(1).map(() => element);
+  };
   return (
     <Container>
       <HouseBlock>
@@ -295,10 +297,10 @@ export default function HomePage() {
         <HouseSubtitle>Raise your ROI with direct advertiser</HouseSubtitle>
         <ButtonContainer>
           <ButtonStyled
-            isPrimary
+            isprimary
             padding="20px 72px"
-            paddingMobile="15px 56px"
-            href="/"
+            paddingmobile="15px 56px"
+            href="#"
           >
             <ButtonDescription>Become a Partner</ButtonDescription>
           </ButtonStyled>
@@ -306,90 +308,60 @@ export default function HomePage() {
       </HouseBlock>
       <AnimationBlock>
         <AnimationColumn>
-          <LateralLine
-            src="/src/assets/images/Line_Vertical_1.png"
-            alt="column1"
-          />
-          <LateralLine
-            src="/src/assets/images/Line_Vertical_1.png"
-            alt="column1"
-          />
+          {setAnimation(
+            2,
+            <LateralLine
+              src="/src/assets/images/Line_Vertical_1.png"
+              alt="column1"
+            />
+          )}
         </AnimationColumn>
         <AnimationColumn>
-          <MiddleLine
-            src="/src/assets/images/Line_Vertical_2.png"
-            alt="column2"
-          />
-          <MiddleLine
-            src="/src/assets/images/Line_Vertical_2.png"
-            alt="column2"
-          />
+          {setAnimation(
+            2,
+            <MiddleLine
+              src="/src/assets/images/Line_Vertical_2.png"
+              alt="column2"
+            />
+          )}
         </AnimationColumn>
         <AnimationColumn>
-          <LateralLine
-            src="/src/assets/images/Line_Vertical_3.png"
-            alt="column3"
-          />
-          <LateralLine
-            src="/src/assets/images/Line_Vertical_3.png"
-            alt="column3"
-          />
+          {setAnimation(
+            2,
+            <LateralLine
+              src="/src/assets/images/Line_Vertical_3.png"
+              alt="column3"
+            />
+          )}
         </AnimationColumn>
       </AnimationBlock>
       <AnimationBlockModal>
         <AnimationLineModal>
-          <LateralAnimationImage
-            src="/src/assets/images/Line_Horisontal_1.png"
-            alt="row1"
-          />
-          <LateralAnimationImage
-            src="/src/assets/images/Line_Horisontal_1.png"
-            alt="row1"
-          />
-          <LateralAnimationImage
-            src="/src/assets/images/Line_Horisontal_1.png"
-            alt="row1"
-          />
-          <LateralAnimationImage
-            src="/src/assets/images/Line_Horisontal_1.png"
-            alt="row1"
-          />
+          {setAnimation(
+            4,
+            <LateralAnimationImage
+              src="/src/assets/images/Line_Horisontal_1.png"
+              alt="row1"
+            />
+          )}
         </AnimationLineModal>
         <AnimationLineModal>
-          <MiddleAnimationImage
-            src="/src/assets/images/Line_Horisontal_2.png"
-            alt="row1"
-          />
-          <MiddleAnimationImage
-            src="/src/assets/images/Line_Horisontal_2.png"
-            alt="row1"
-          />
-          <MiddleAnimationImage
-            src="/src/assets/images/Line_Horisontal_2.png"
-            alt="row1"
-          />
-          <MiddleAnimationImage
-            src="/src/assets/images/Line_Horisontal_2.png"
-            alt="row1"
-          />
+          {setAnimation(
+            4,
+            <MiddleAnimationImage
+              src="/src/assets/images/Line_Horisontal_2.png"
+              alt="row2"
+            />
+          )}
         </AnimationLineModal>
         <AnimationLineModal>
-          <LateralAnimationImage
-            src="/src/assets/images/Line_Horisontal_3.png"
-            alt="row1"
-          />
-          <LateralAnimationImage
-            src="/src/assets/images/Line_Horisontal_3.png"
-            alt="row1"
-          />
-          <LateralAnimationImage
-            src="/src/assets/images/Line_Horisontal_3.png"
-            alt="row1"
-          />
-          <LateralAnimationImage
-            src="/src/assets/images/Line_Horisontal_3.png"
-            alt="row1"
-          />
+          {setAnimation(
+            4,
+            <LateralAnimationImage
+              src="/src/assets/images/Line_Horisontal_3.png"
+              alt="row3"
+            />
+          )}
         </AnimationLineModal>
       </AnimationBlockModal>
       <BlogBlock>
@@ -398,7 +370,7 @@ export default function HomePage() {
           <BlogContainer>
             {articlesArr.map((article, pos) => {
               return pos === 0 ? (
-                <BlogLink href="#" key={`article${pos}`}>
+                <BlogLink href="/" key={`article${pos}`}>
                   <BlogContentActive>
                     <BlogArticle>{article}</BlogArticle>
                     <BlogDate>10.02.2023</BlogDate>

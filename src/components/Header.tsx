@@ -200,7 +200,7 @@ export default function Header() {
               <MenuNavBar>
                 {linkArr.map((link) => {
                   return (
-                    <MenuNavItem>
+                    <MenuNavItem key={link}>
                       <MenuNavLink href="#">{link}</MenuNavLink>
                     </MenuNavItem>
                   );
@@ -209,7 +209,7 @@ export default function Header() {
             </nav>
             <ButtonContainer>
               <ButtonStyled
-                isPrimary={false}
+                isprimary={false}
                 padding={"14px"}
                 href="#"
                 onClick={() => {
@@ -221,10 +221,10 @@ export default function Header() {
                   {isRussian ? "RU" : "EN"}
                 </LanguageContainer>
               </ButtonStyled>
-              <ButtonStyled isPrimary={false} padding={"14px"} href="#">
+              <ButtonStyled isprimary={false} padding={"14px"} href="#">
                 LOG IN
               </ButtonStyled>
-              <ButtonStyled isPrimary padding={"14px"} href="#">
+              <ButtonStyled isprimary padding={"14px"} href="#">
                 SIGN UP
               </ButtonStyled>
             </ButtonContainer>
