@@ -2,6 +2,13 @@ import styled, { keyframes } from "styled-components";
 import { ButtonStyled } from "./UI/common-elements";
 import React from "react";
 
+import column1 from "../assets/images/Line_Vertical_1.png";
+import column2 from "../assets/images/Line_Vertical_2.png";
+import column3 from "../assets/images/Line_Vertical_3.png";
+import row1 from "../assets/images/Line_Horisontal_1.png";
+import row2 from "../assets/images/Line_Horisontal_2.png";
+import row3 from "../assets/images/Line_Horisontal_3.png";
+
 const Container = styled.section`
   padding: 0 140px 60px 140px;
   height: 1020px;
@@ -308,60 +315,24 @@ export default function HomePage() {
       </HouseBlock>
       <AnimationBlock>
         <AnimationColumn>
-          {setAnimation(
-            2,
-            <LateralLine
-              src="../src/assets/images/Line_Vertical_1.png"
-              alt="column1"
-            />
-          )}
+          {setAnimation(2, <LateralLine src={column1} alt="column1" />)}
         </AnimationColumn>
         <AnimationColumn>
-          {setAnimation(
-            2,
-            <MiddleLine
-              src="../src/assets/images/Line_Vertical_2.png"
-              alt="column2"
-            />
-          )}
+          {setAnimation(2, <MiddleLine src={column2} alt="column2" />)}
         </AnimationColumn>
         <AnimationColumn>
-          {setAnimation(
-            2,
-            <LateralLine
-              src="../src/assets/images/Line_Vertical_3.png"
-              alt="column3"
-            />
-          )}
+          {setAnimation(2, <LateralLine src={column3} alt="column3" />)}
         </AnimationColumn>
       </AnimationBlock>
       <AnimationBlockModal>
         <AnimationLineModal>
-          {setAnimation(
-            4,
-            <LateralAnimationImage
-              src="../src/assets/images/Line_Horisontal_1.png"
-              alt="row1"
-            />
-          )}
+          {setAnimation(4, <LateralAnimationImage src={row1} alt="row1" />)}
         </AnimationLineModal>
         <AnimationLineModal>
-          {setAnimation(
-            4,
-            <MiddleAnimationImage
-              src="../src/assets/images/Line_Horisontal_2.png"
-              alt="row2"
-            />
-          )}
+          {setAnimation(4, <MiddleAnimationImage src={row2} alt="row2" />)}
         </AnimationLineModal>
         <AnimationLineModal>
-          {setAnimation(
-            4,
-            <LateralAnimationImage
-              src="../src/assets/images/Line_Horisontal_3.png"
-              alt="row3"
-            />
-          )}
+          {setAnimation(4, <LateralAnimationImage src={row3} alt="row3" />)}
         </AnimationLineModal>
       </AnimationBlockModal>
       <BlogBlock>

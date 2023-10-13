@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+import twitter from "/src/assets/icons/social-twitter.svg";
+import facebook from "/src/assets/icons/social-facebook.svg";
+import instagram from "/src/assets/icons/social-instagram.svg";
+import linkedin from "/src/assets/icons/social-linkedin.svg";
+import youtube from "/src/assets/icons/social-youtube.svg";
+import tiktok from "/src/assets/icons/social-tiktok.svg";
+import telegram from "/src/assets/icons/social-telegram.svg";
+import vk from "/src/assets/icons/social-vk.svg";
+
 const Container = styled.footer`
   border-top: 4px solid #9dadf2;
   border-left: 4px solid #9dadf2;
@@ -93,14 +102,14 @@ export default function Footer() {
     "Brand Guide",
   ];
   const iconArr = [
-    "../src/assets/icons/social-twitter.svg",
-    "../src/assets/icons/social-facebook.svg",
-    "../src/assets/icons/social-instagram.svg",
-    "../src/assets/icons/social-linkedin.svg",
-    "../src/assets/icons/social-youtube.svg",
-    "../src/assets/icons/social-tiktok.svg",
-    "../src/assets/icons/social-telegram.svg",
-    "../src/assets/icons/social-vk.svg",
+    twitter,
+    facebook,
+    instagram,
+    linkedin,
+    youtube,
+    tiktok,
+    telegram,
+    vk,
   ];
   return (
     <Container>
