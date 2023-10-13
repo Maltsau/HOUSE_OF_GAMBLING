@@ -1,13 +1,17 @@
-import styled from "styled-components";
-import { useState } from "react";
+import styled, { keyframes } from "styled-components";
+import { useEffect, useState } from "react";
 
 import { ButtonStyled } from "./UI/common-elements";
 
 const Container = styled.header`
   position: relative;
   padding: 16px 140px 0 140px;
+  z-index: 10;
   @media (max-width: 1550px) {
     padding: 10px 3.125vw 0 3.125vw;
+  }
+  @media (max-width: 1000px) {
+    padding: 10px 10px;
   }
 `;
 
@@ -109,90 +113,164 @@ const BurgerLine = styled.div`
   background-color: white;
 `;
 
-const MobileMenu = styled.div`
+const menuAppear = keyframes`
+  from {
+    transform: translateY(-100%)
+  }
+  to {
+    transform: translateY(0%)
+  }
+`;
+
+const MobileMenu = styled.nav`
   position: absolute;
+  left: 0;
+  right: 0;
+  background-color: #110a1d;
+  z-index: 10;
+  animation: ${menuAppear} 0.5s ease-out;
+  transition: all 0.5s;
+  height: 100%;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+`;
+
+const MobileMenuPageList = styled.ul`
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+`;
+
+const MobileListItem = styled.li`
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px 20px;
+  border: 2px solid #478bf9;
+  border-radius: 30px;
+`;
+
+const MobileListLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+`;
+
+const LoginListItem = styled(MobileListItem)`
+  border-color: #9dadf2;
+`;
+
+const SignupListItem = styled(MobileListItem)`
+  border: none;
+  background-color: #478bf9;
 `;
 
 export default function Header() {
   const [isRussian, setIsRussian] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const linkArr = [
+    "About us",
+    "Brands",
+    "Commissions",
+    "News",
+    "Contact us",
+    "Careers",
+  ];
+  useEffect(() => {
+    isMenuOpen
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  }, [isMenuOpen]);
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setIsMenuOpen(false);
+    });
+  }, []);
   return (
-    <Container>
-      <MenuContainer>
-        <InnerNavContainer>
-          <EmptyBlock />
-          <nav>
-            <MenuNavBar>
-              <MenuNavItem>
-                <MenuNavLink href="#">About us</MenuNavLink>
-              </MenuNavItem>
-              <MenuNavItem>
-                <MenuNavLink href="#">Brands</MenuNavLink>
-              </MenuNavItem>
-              <MenuNavItem>
-                <MenuNavLink href="#">Commissions</MenuNavLink>
-              </MenuNavItem>
-              <MenuNavItem>
-                <MenuNavLink href="#">News</MenuNavLink>
-              </MenuNavItem>
-              <MenuNavItem>
-                <MenuNavLink href="#">Contact us</MenuNavLink>
-              </MenuNavItem>
-              <MenuNavItem>
-                <MenuNavLink href="#">Careers</MenuNavLink>
-              </MenuNavItem>
-            </MenuNavBar>
-          </nav>
-          <ButtonContainer>
-            <ButtonStyled
-              isPrimary={false}
-              padding={"14px"}
-              href="#"
+    <>
+      <Container>
+        <MenuContainer>
+          <InnerNavContainer>
+            <EmptyBlock />
+            <nav>
+              <MenuNavBar>
+                {linkArr.map((link) => {
+                  return (
+                    <MenuNavItem>
+                      <MenuNavLink href="#">{link}</MenuNavLink>
+                    </MenuNavItem>
+                  );
+                })}
+              </MenuNavBar>
+            </nav>
+            <ButtonContainer>
+              <ButtonStyled
+                isPrimary={false}
+                padding={"14px"}
+                href="#"
+                onClick={() => {
+                  setIsRussian(!isRussian);
+                }}
+              >
+                <LanguageContainer>
+                  <LanguageIcon />
+                  {isRussian ? "RU" : "EN"}
+                </LanguageContainer>
+              </ButtonStyled>
+              <ButtonStyled isPrimary={false} padding={"14px"} href="#">
+                LOG IN
+              </ButtonStyled>
+              <ButtonStyled isPrimary padding={"14px"} href="#">
+                SIGN UP
+              </ButtonStyled>
+            </ButtonContainer>
+          </InnerNavContainer>
+          <MobileMenuContainer>
+            <MobileLanguageButton>
+              <MobileLanguageIcon
+                src="/src/assets/icons/languge-icon.svg"
+                alt="language-icon"
+              />
+            </MobileLanguageButton>
+            <MobileButton
               onClick={() => {
-                setIsRussian(!isRussian);
+                setIsMenuOpen(!isMenuOpen);
               }}
             >
-              <LanguageContainer>
-                <LanguageIcon />
-                {isRussian ? "RU" : "EN"}
-              </LanguageContainer>
-            </ButtonStyled>
-            <ButtonStyled isPrimary={false} padding={"14px"} href="#">
-              LOG IN
-            </ButtonStyled>
-            <ButtonStyled isPrimary padding={"14px"} href="#">
-              SIGN UP
-            </ButtonStyled>
-          </ButtonContainer>
-        </InnerNavContainer>
-        <MobileMenuContainer>
-          <MobileLanguageButton>
-            <MobileLanguageIcon
-              src="/src/assets/icons/languge-icon.svg"
-              alt="language-icon"
-            />
-          </MobileLanguageButton>
-          <MobileButton
-            onClick={() => {
-              setIsMenuOpen(!isMenuOpen);
-            }}
-          >
-            {isMenuOpen ? (
-              <img src="/src/assets/icons/close-icon.svg" alt="close-icon" />
-            ) : (
-              <>
-                <BurgerLine />
-                <BurgerLine />
-                <BurgerLine />
-              </>
-            )}
-            {/* <BurgerLine />
-            <BurgerLine />
-            <BurgerLine /> */}
-          </MobileButton>
-        </MobileMenuContainer>
-      </MenuContainer>
-      {isMenuOpen ? <MobileMenu>MENU</MobileMenu> : null}
-    </Container>
+              {isMenuOpen ? (
+                <img src="/src/assets/icons/close-icon.svg" alt="close-icon" />
+              ) : (
+                <>
+                  <BurgerLine />
+                  <BurgerLine />
+                  <BurgerLine />
+                </>
+              )}
+            </MobileButton>
+          </MobileMenuContainer>
+        </MenuContainer>
+      </Container>
+      {isMenuOpen ? (
+        <MobileMenu>
+          <MobileMenuPageList>
+            {linkArr.map((link) => {
+              return (
+                <MobileListItem>
+                  <MobileListLink href="#">{link}</MobileListLink>
+                </MobileListItem>
+              );
+            })}
+          </MobileMenuPageList>
+          <MobileMenuPageList>
+            <LoginListItem>LOG IN</LoginListItem>
+            <SignupListItem>SIGN UP</SignupListItem>
+          </MobileMenuPageList>
+        </MobileMenu>
+      ) : null}
+    </>
   );
 }
