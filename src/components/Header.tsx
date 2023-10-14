@@ -184,11 +184,6 @@ export default function Header() {
     "Careers",
   ];
   useEffect(() => {
-    isMenuOpen
-      ? (document.body.style.overflow = "hidden")
-      : (document.body.style.overflow = "auto");
-  }, [isMenuOpen]);
-  useEffect(() => {
     window.addEventListener("resize", () => {
       setIsMenuOpen(false);
     });
